@@ -1,0 +1,17 @@
+1) Flow
+	A) Main Call: [GET] http://localhost:8290/TypiCodeEIGetComments/{postId} 
+			(i) e.g. http://localhost:8290/TypiCodeEIGetComments/7
+			(ii) When calling, ignore the header "Accept-Encoding" & set "Content-Type=application/json".
+	B) 1st "Call" Mediator
+		i) "TypiCodeGetPost.xml"
+		ii) https://jsonplaceholder.typicode.com/posts/{uri.var.postId}		
+			(a) "{uri.var.postId}" must map path variable of {postId} of above "A)".
+	C) Using "Log" Mediator, log the response from 1st Call. Use "json-eval($.)"
+	D) Using "Property" Mediator, create a variable "uri.var.commPostId" which maps the "id" of the response body of End-Point "TypiCodeGetPost"
+		i) Using the expression "json-eval($.id)"
+		ii) This is to match the path variable of the 2nd API,"uri.var.commPostId"
+	E) 2nd "Call" Mediator
+		i) "TypiCodeGetComments.xml"
+		ii) https://jsonplaceholder.typicode.com/posts/{uri.var.commPostId}/comments		
+			(a) "{uri.var.commPostId}" must map path variable of {uri.var.commPostId} of above "D)".	
+	F) Send back "Respond"								

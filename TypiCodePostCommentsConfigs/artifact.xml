@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="TypiCodeGetPost" groupId="lmy.typicode.postcomments.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/TypiCodeGetPost.xml</file>
+    </artifact>
+    <artifact name="TypiCodeGetComments" groupId="lmy.typicode.postcomments.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/TypiCodeGetComments.xml</file>
+    </artifact>
+    <artifact name="TypiCodeEIGetComments" groupId="lmy.typicode.postcomments.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/TypiCodeEIGetComments.xml</file>
+    </artifact>
+</artifacts>
