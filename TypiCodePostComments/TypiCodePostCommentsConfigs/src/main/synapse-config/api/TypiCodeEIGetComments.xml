@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/TypiCodeEIGetComments" name="TypiCodeEIGetComments" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/{postId}">
+        <inSequence>
+            <call>
+                <endpoint key="TypiCodeGetPost"/>
+            </call>
+            <log level="custom">
+                <property expression="json-eval($)" name="Response Body"/>
+            </log>
+            <property expression="json-eval($.id)" name="uri.var.commPostId" scope="default" type="STRING"/>
+            <log level="custom">
+                <property expression="fn:concat('Comment Post ID: ', get-property('uri.var.commPostId'))" name="CommPostID"/>
+            </log>
+            <call>
+                <endpoint key="TypiCodeGetComments"/>
+            </call>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
